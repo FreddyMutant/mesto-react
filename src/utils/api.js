@@ -12,7 +12,7 @@ export default class Api {
     }).then((response) => this._checkRequestResult(response));
   }
 
-  // Добавление карочки на сервер
+  // Добавление карточки на сервер
 
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
@@ -24,6 +24,7 @@ export default class Api {
       }),
     }).then((response) => this._checkRequestResult(response));
   }
+  
   // Удаление карточки
 
   deleteCard(cardId) {
