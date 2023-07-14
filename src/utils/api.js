@@ -3,14 +3,17 @@ export default class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-  // получить карточки
+
+  // Получение карточки
+
   getCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     }).then((response) => this._checkRequestResult(response));
   }
 
-  // добавление карочки на сервер
+  // Добавление карочки на сервер
+
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
@@ -21,7 +24,8 @@ export default class Api {
       }),
     }).then((response) => this._checkRequestResult(response));
   }
-  // Удаление карты
+  // Удаление карточки
+
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
@@ -29,7 +33,8 @@ export default class Api {
     }).then((response) => this._checkRequestResult(response));
   }
 
-  // поставить лайк
+  // Поставить лайк
+
   likeCard(cardId) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/cohort-66/cards/${cardId}/likes`,
@@ -39,7 +44,9 @@ export default class Api {
       }
     ).then((response) => this._checkRequestResult(response));
   }
+
   // Убрать лайк с карты
+
   unlikeCard(cardId) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/cohort-66/cards/${cardId}/likes`,
@@ -51,6 +58,7 @@ export default class Api {
   }
 
   // Получить данные пользователя
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
@@ -58,6 +66,7 @@ export default class Api {
   }
 
   // Редактировать данные пользователя
+
   editUserInfo(data) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-66/users/me`, {
       method: "PATCH",
@@ -68,7 +77,9 @@ export default class Api {
       }),
     }).then((response) => this._checkRequestResult(response));
   }
+
   // Редактировать аватар
+  
   editAvatar(link) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/cohort-66/users/me/avatar`,
