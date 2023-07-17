@@ -24,7 +24,7 @@ export default class Api {
       }),
     }).then((response) => this._checkRequestResult(response));
   }
-  
+
   // Удаление карточки
 
   deleteCard(cardId) {
@@ -37,25 +37,19 @@ export default class Api {
   // Поставить лайк
 
   likeCard(cardId) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-66/cards/${cardId}/likes`,
-      {
-        method: "PUT",
-        headers: this._headers,
-      }
-    ).then((response) => this._checkRequestResult(response));
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((response) => this._checkRequestResult(response));
   }
 
   // Убрать лайк с карты
 
   unlikeCard(cardId) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-66/cards/${cardId}/likes`,
-      {
-        method: "DELETE",
-        headers: this._headers,
-      }
-    ).then((response) => this._checkRequestResult(response));
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((response) => this._checkRequestResult(response));
   }
 
   // Получить данные пользователя
@@ -69,7 +63,7 @@ export default class Api {
   // Редактировать данные пользователя
 
   editUserInfo(data) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-66/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -80,18 +74,15 @@ export default class Api {
   }
 
   // Редактировать аватар
-  
+
   editAvatar(link) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-66/users/me/avatar`,
-      {
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify({
-          avatar: `${link}`,
-        }),
-      }
-    ).then((response) => this._checkRequestResult(response));
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: `${link}`,
+      }),
+    }).then((response) => this._checkRequestResult(response));
   }
 
   _checkRequestResult(response) {

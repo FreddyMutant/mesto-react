@@ -7,7 +7,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
   const [userDescription, setUserDescription] = React.useState(
     "Исследователь океана"
   );
-  const [userAvatar, setuserAvatar] = React.useState("");
+  const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
 
   const getUserInfoApi = () => {
@@ -16,7 +16,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
       .then((data) => {
         setUserName(data.name);
         setUserDescription(data.about);
-        setuserAvatar(data.avatar);
+        setUserAvatar(data.avatar);
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
