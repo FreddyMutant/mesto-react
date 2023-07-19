@@ -3,17 +3,14 @@ export default class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-
-  // Получение карточки
-
+  // получить карточки
   getCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     }).then((response) => this._checkRequestResult(response));
   }
 
-  // Добавление карточки на сервер
-
+  // добавление карочки на сервер
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
@@ -24,9 +21,7 @@ export default class Api {
       }),
     }).then((response) => this._checkRequestResult(response));
   }
-
-  // Удаление карточки
-
+  // Удаление карты
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
@@ -34,17 +29,14 @@ export default class Api {
     }).then((response) => this._checkRequestResult(response));
   }
 
-  // Поставить лайк
-
+  // поставить лайк
   likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
     }).then((response) => this._checkRequestResult(response));
   }
-
   // Убрать лайк с карты
-
   unlikeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
@@ -53,7 +45,6 @@ export default class Api {
   }
 
   // Получить данные пользователя
-
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
@@ -61,20 +52,17 @@ export default class Api {
   }
 
   // Редактировать данные пользователя
-
-  editUserInfo(data) {
+  editUserInfo(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: `${data.name}`,
-        about: `${data.profession}`,
+        name: `${name}`,
+        about: `${about}`,
       }),
     }).then((response) => this._checkRequestResult(response));
   }
-
   // Редактировать аватар
-
   editAvatar(link) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",

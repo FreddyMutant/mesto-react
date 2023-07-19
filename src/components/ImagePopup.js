@@ -1,4 +1,8 @@
-function ImagePopup({ isOpen, card, onClose }) {
+import usePopupClose from "../hooks/usePopupClose";
+
+export default function ImagePopup({ isOpen, card, onClose }) {
+  usePopupClose(isOpen, onClose);
+
   return (
     <div
       className={`popup popup_type_image-big ${isOpen ? "popup_opened" : ""}`}
@@ -17,4 +21,3 @@ function ImagePopup({ isOpen, card, onClose }) {
     </div>
   );
 }
-export { ImagePopup };
