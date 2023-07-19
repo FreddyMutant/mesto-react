@@ -35,5 +35,6 @@ You can edit your profile. Delete card or add new one. Like button will work asw
 - Figma
 - Git
 - Javascript
+- React
 
 ## [Check out the project on GitHubPages](https://freddymutant.github.io/mesto/)
