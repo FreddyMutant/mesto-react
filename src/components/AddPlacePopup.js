@@ -43,12 +43,12 @@ export default function AddPlacePopup({
         noValidate
         id="popup__pick"
         onChange={handleChange}
-        value={values.name}
+        value={values.name || ""}
       />
       <span className="popup__input-error popup__pick-error"></span>
       <input
         className="popup__input popup__input_type_link popup__input_type_error"
-        value={values.link}
+        value={values.link || ""}
         onChange={handleChange}
         placeholder="Ссылка на картинку"
         type="url"

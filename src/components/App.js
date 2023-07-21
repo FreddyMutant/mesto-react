@@ -17,7 +17,11 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isEditProfilePopupLoading, setIsEditProfilePopupLoading] =
+    useState(false);
+  const [isEditAvatarPopupLoading, setIsEditAvatarPopupLoading] =
+    useState(false);
+  const [isAddPlacePopupLoading, setIsAddPlacePopupLoading] = useState(false);
 
   const getUserInfoApi = () => {
     api
@@ -108,7 +112,7 @@ function App() {
   }
 
   function handleUpdateUser({ name, about }) {
-    setIsLoading(true);
+    setIsEditProfilePopupLoading(true);
     api
       .editUserInfo(name, about)
       .then((data) => {
@@ -120,12 +124,12 @@ function App() {
         console.log(`Ошибка: ${err}`);
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsEditProfilePopupLoading(false);
       });
   }
 
   function handleUpdateAvatar({ avatar }) {
-    setIsLoading(true);
+    setIsEditAvatarPopupLoading(true);
     api
       .editAvatar(avatar)
       .then((data) => {
@@ -136,12 +140,12 @@ function App() {
         console.log(`Ошибка: ${err}`);
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsEditAvatarPopupLoading(false);
       });
   }
 
   function handleAddCardSubmit(card) {
-    setIsLoading(true);
+    setIsAddPlacePopupLoading(true);
     api
       .addCard(card)
       .then((newCard) => {
@@ -152,7 +156,7 @@ function App() {
         console.log(`Ошибка: ${err}`);
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsAddPlacePopupLoading(false);
       });
   }
 
@@ -175,21 +179,21 @@ function App() {
           isOpen={isEditPopupProfileOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
-          isLoading={isLoading}
+          isLoading={isEditProfilePopupLoading}
         />
 
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
-          isLoading={isLoading}
+          isLoading={isEditAvatarPopupLoading}
         />
 
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddCard={handleAddCardSubmit}
-          isLoading={isLoading}
+          isLoading={isAddPlacePopupLoading}
         />
         <ImagePopup
           card={selectedCard}
