@@ -14,9 +14,9 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isImagePopupOpen, setImagePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState([]);
+  const [selectedCard, setSelectedCard] = useState({});
   const [cards, setCards] = useState([]);
-  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const getUserInfoApi = () => {
@@ -195,7 +195,7 @@ function App() {
           card={selectedCard}
           isOpen={isImagePopupOpen}
           onClose={closeAllPopups}
-        ></ImagePopup>
+        />
       </div>
     </CurrentUserContext.Provider>
   );

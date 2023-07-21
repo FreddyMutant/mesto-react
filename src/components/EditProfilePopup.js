@@ -40,7 +40,7 @@ export default function EditProfilePopup({
         placeholder="Имя"
         type="text"
         name="name"
-        value={values.name}
+        value={values.name || ""}
         minLength="2"
         maxLength="40"
         required
@@ -61,7 +61,7 @@ export default function EditProfilePopup({
         noValidate
         id="popup__prof"
         onChange={handleChange}
-        value={values.profession}
+        value={values.profession || ""}
       />
       <span className="popup__input-error popup__prof-error"></span>
     </PopupWithForm>
